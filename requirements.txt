@@ -1,0 +1,9 @@
+torch
+numpy
+pillow
+scipy
+evo
+requests
+tqdm
+matplotlib
+numpy
