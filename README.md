@@ -17,11 +17,12 @@ It preserves privacy using Differential Privacy, handles non-IID clients using R
 
 * Two-Stream ResNet18 (RGB + Depth)
 * GRU for temporal motion modeling
+* Converts each frame pair into 12-channel input
 * 6D rotation representation
 * Geodesic rotation loss
 * Per-client Differential Privacy (clipping + Gaussian noise)
-* Reliability-aware + Trimmed-Mean federated aggregation
-* ATE & RPE evaluation using evo
+* Reliability-aware + Trimmed-Mean aggregation
+* ATE & RPE evaluation using `evo`
 
 ---
 
@@ -99,34 +100,49 @@ evo_rpe tum ground_truth_split.txt estimated_trajectory_split.txt -r trans_part 
 
 # 📈 ATE/RPE Analysis Scripts
 
-We have provided you the run_analysis file copy and paste it in your ate_results and rpe_results and then run this code
-ATE:
+Copy `run_analysis.py` into:
+
+```
+ate_results/run_analysis.py
+rpe_results/run_analysis.py
+```
+
+Run:
+
+### ATE analysis
 
 ```bash
 cd ate_results
 python3 run_analysis.py
 ```
 
-RPE:
+### RPE analysis
 
 ```bash
 cd ../rpe_results
 python3 run_analysis.py
 ```
 
-Generates plots and CSV summaries.
+Generates:
+
+* ATE vs Distance plots
+* RPE vs Time plots
+* Histograms
+* Boxplots
+* CSV statistics
 
 ---
 
-# 🔧 Configuration Highlights
+# 🔧 Configuration Highlights 
 
 | Parameter           | Value    |
 | ------------------- | -------- |
-| DP_CLIPPING_NORM    | 1e-2     |
-| DP_NOISE_MULTIPLIER | 0.1      |
-| FL_ROUNDS           | 15       |
+| **FL_ROUNDS**       | 50       |
 | CLIENTS_PER_ROUND   | 3        |
 | NUM_CLIENTS         | 5        |
+| DP_CLIPPING_NORM    | 1e-2     |
+| DP_NOISE_MULTIPLIER | 0.1      |
+| RELIABILITY_SCORE   | 0.9      |
 | SEQUENCE_LEN        | 5        |
 | IMG_SIZE            | 224      |
 | BACKBONE            | ResNet18 |
@@ -135,10 +151,10 @@ Generates plots and CSV summaries.
 
 # 🤝 Contributors
 
-| Student         | Contribution                                                                                   |
-| --------------- | ---------------------------------------------------------------------------------------------- |
-| Rudra Baunk     | Coding, debugging, full FL pipeline, DP integration, experiments, plotting, ATE/RPE evaluation |
-| Nikunj Indoriya | Dataset setup, preprocessing, evaluation scripts, plots, documentation support                 |
+| Student             | Contribution                                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| **Rudra Baunk**     | Coding, debugging, full FL pipeline, DP integration, experiments, plotting, ATE/RPE evaluation |
+| **Nikunj Indoriya** | Dataset setup, preprocessing, evaluation scripts, plots, documentation support                 |
 
 ---
 
@@ -157,4 +173,3 @@ R. Baunk, N. Indoriya,
 MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy...
 ```
-
