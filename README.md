@@ -99,6 +99,7 @@ evo_rpe tum ground_truth_split.txt estimated_trajectory_split.txt -r trans_part 
 
 # 📈 ATE/RPE Analysis Scripts
 
+We have provided you the run_analysis file copy and paste it in your ate_results and rpe_results and then run this code
 ATE:
 
 ```bash
