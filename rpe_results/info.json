@@ -1,0 +1,1 @@
+{"title": "RPE w.r.t. translation part (m)\nfor delta = 1 (frames) using consecutive pairs\n(not aligned)", "ref_name": "ground_truth_split.txt", "est_name": "estimated_trajectory_split.txt", "label": "RPE (m)"}
